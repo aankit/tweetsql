@@ -44,7 +44,8 @@ for t in statuses:
                 w_obj = Word(word=w)
                 db_session.add(w_obj)
                 db_session.commit()
-        tw.words.append(w_obj)
+        if w_obj not in tw.words:
+            tw.words.append(w_obj)
         db_session.add(tw)
         db_session.commit()
     except OperationalError:
